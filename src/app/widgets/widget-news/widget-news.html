@@ -1,0 +1,17 @@
+@let w = view();
+<div class="grid-container" [class.date-first]="!!w.image">
+  <a class="full-block-link" [href]="w.href" [attr.aria-label]="w.title" target="_blank" rel="noopener"></a>
+  @if (w.image; as image) {
+    <div class="image">
+      <div class="widget-background">
+        <img class="picture-box widget-background" [src]="image" alt="" loading="lazy" />
+        <div class="shadow"></div>
+      </div>
+    </div>
+  }
+  <div class="category" [class]="'category-' + basis()" [class.width-image]="!!w.image">
+    <a class="link main" [href]="w.categoryHref" target="_blank" rel="noopener">{{ w.category }}</a>
+  </div>
+  <div class="text" [class]="'text-' + basis()" [class.width-image]="!!w.image">{{ w.title }}</div>
+  <div class="time" [class]="'time-' + basis()" [class.width-image]="!!w.image">{{ w.time }}</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col logo">
+    <a href="/">
+      <img alt="The Bell logo" width="146" height="33" fetchpriority="high" src="assets/images/logo.svg" />
+    </a>
+  </div>
+
+  <div class="col menu">
+    <nav class="tags">
+      @for (tag of tags; track tag.href) {
+        <a [href]="tag.href" [class.select]="tag.selected">{{ tag.title }}</a>
+      }
+    </nav>
+  </div>
+
+  <div class="col tools">
+    <a target="_blank" href="https://subscription.thebell.site/unlimited" class="unlimited-link">Unlimited</a>
+    <div class="col donate">
+      <a target="_blank" [href]="site + '/paywall'" class="button">Подписаться</a>
+    </div>
+    <a href="https://en.thebell.io" class="lang" aria-label="The Bell English"><span>en</span></a>
+    <div class="col pointer search-icon">
+      <div class="search-container">
+        <img alt="" width="21" height="22" src="assets/images/search.svg" />
+      </div>
+    </div>
+    <div class="col pointer burger">
+      <div>
+        <div class="menu-line"><img alt="" width="20" height="2" src="assets/images/menuline.svg" /></div>
+        <div class="menu-line" style="margin-top: 10px">
+          <img alt="" width="20" height="2" src="assets/images/menuline.svg" />
+        </div>
+      </div>
+    </div>
+    <div class="col pointer account">
+      <a [href]="site + '/account/login'" class="login-link" aria-label="Account login">Войти</a>
+    </div>
+  </div>
+
+  <div class="col pointer account-mobile">
+    <a [href]="site + '/account'">
+      <img src="assets/icons/user.svg" alt="" width="21" height="20" />
+    </a>
+  </div>
+  <div class="col pointer burger-mobile">
+    <div>
+      <div class="menu-line"><img alt="" width="20" height="2" src="assets/images/menuline.svg" /></div>
+      <div class="menu-line" style="margin-top: 10px">
+        <img alt="" width="20" height="2" src="assets/images/menuline.svg" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row_button_mobile">
+  <a target="_blank" [href]="site + '/paywall'" class="button_mobile">Подписаться</a>
+</div>

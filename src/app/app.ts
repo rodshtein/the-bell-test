@@ -1,12 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Footer } from './layout/footer/footer';
+import { Header } from './layout/header/header';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Header, Footer],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected readonly title = signal('the-bell-test');
+  protected readonly topBanner = {
+    href: 'https://youtu.be/hiQbCXVqiYA',
+    image: 'assets/media/top-banner-desktop.webp',
+    imageMobile: 'assets/media/top-banner-mobile.webp',
+  };
 }

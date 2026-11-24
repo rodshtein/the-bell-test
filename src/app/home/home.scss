@@ -1,0 +1,16 @@
+:host {
+  font-family: 'Roboto Flex', sans-serif;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+app-line {
+  display: block;
+}

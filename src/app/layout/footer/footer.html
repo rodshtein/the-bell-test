@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="menu category_menu">
+    <div class="menu_col">
+      @for (item of categories; track item.href) {
+        <div class="menu_item"><a [href]="item.href">{{ item.title }}</a></div>
+      }
+    </div>
+  </div>
+  <div class="menu">
+    @for (column of columns; track column.title) {
+      <div class="menu_col">
+        <div class="menu_title">{{ column.title }}</div>
+        @for (item of column.items; track item.title) {
+          <div class="menu_item"><a [href]="item.href" target="_blank" rel="noopener">{{ item.title }}</a></div>
+        }
+      </div>
+    }
+  </div>
+</footer>

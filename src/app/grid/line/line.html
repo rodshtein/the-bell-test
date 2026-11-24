@@ -1,0 +1,24 @@
+@let l = line();
+<div class="root">
+  <div
+    class="line"
+    [class]="'basis-' + l.basis"
+    [style.min-height.px]="l.minHeight"
+    [style.grid-template-columns]="columns()"
+  >
+    @for (cell of l.cells; track $index) {
+      <div class="line-widget" [class.basis-50]="cell.basis === 50">
+        @if (cell.contentItem; as item) {
+          @switch (item.__typename) {
+            @case ('Post') {
+              <app-widget-news [contentItem]="item" [basis]="cell.basis" />
+            }
+            @case ('ExternalPost') {
+              <app-widget-news [contentItem]="item" [basis]="cell.basis" />
+            }
+          }
+        }
+      </div>
+    }
+  </div>
+</div>
