@@ -67,7 +67,32 @@ export interface ExternalPost {
   __typename: 'ExternalPost';
 }
 
-export type ContentItem = Post | ExternalPost;
+export interface SubscriptionList {
+  id: string;
+  __typename: 'SubscriptionList';
+}
+
+export type ParentProduct = 'news' | 'tech' | 'invest' | 'unlimited' | 'chat';
+
+export interface Webinar {
+  id: string;
+  title: string;
+  speaker: string;
+  speaker_about: string;
+  starts_at: number;
+  registration_ends_at: number;
+  url: string;
+  parent_product: ParentProduct;
+  __typename: 'Webinar';
+}
+
+export interface EventList {
+  id: string;
+  webinars: Webinar[];
+  __typename: 'EventList';
+}
+
+export type ContentItem = Post | ExternalPost | SubscriptionList | EventList;
 
 export interface LayoutWidget {
   id: string;

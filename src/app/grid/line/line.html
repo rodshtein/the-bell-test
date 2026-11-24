@@ -9,13 +9,12 @@
     @for (cell of l.cells; track $index) {
       <div class="line-widget" [class.basis-50]="cell.basis === 50">
         @if (cell.contentItem; as item) {
-          @switch (item.__typename) {
-            @case ('Post') {
-              <app-widget-news [contentItem]="item" [basis]="cell.basis" />
-            }
-            @case ('ExternalPost') {
-              <app-widget-news [contentItem]="item" [basis]="cell.basis" />
-            }
+          @if (item.__typename === 'Post' || item.__typename === 'ExternalPost') {
+            <app-widget-news [contentItem]="item" [basis]="cell.basis" />
+          } @else if (item.__typename === 'SubscriptionList') {
+            <app-widget-subscription [contentItem]="item" [basis]="cell.basis" />
+          } @else if (item.__typename === 'EventList') {
+            <app-widget-event [contentItem]="item" [basis]="cell.basis" />
           }
         }
       </div>

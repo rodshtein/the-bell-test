@@ -1,12 +1,26 @@
+import { openWebinars } from './events';
 import { Basis, ContentItem, GridLine, LayoutDataItem, LayoutTheme } from './models';
 
 const MIN_HEIGHT: Record<Basis, number> = { 25: 175, 33: 300, 50: 300, 100: 500 };
 
 const isSmall = (item: ContentItem) => item.__typename === 'Post' && item.allowed_widget_sizes === '25';
 
-export function buildLines(theme: LayoutTheme, feed: LayoutDataItem[]): GridLine[] {
+function isVisible(item: ContentItem, now: number, isSubscribed: boolean): boolean {
+  if (item.__typename === 'SubscriptionList') return !isSubscribed;
+  if (item.__typename === 'EventList') return openWebinars(item, now).length > 0;
+  return true;
+}
+
+export function buildLines(
+  theme: LayoutTheme,
+  feed: LayoutDataItem[],
+  now: number,
+  isSubscribed: boolean,
+): GridLine[] {
   const pinned = new Map(
-    theme.preset.items.map((item) => [`${item.layoutThemeItemId}:${item.position}`, item.contentItem]),
+    theme.preset.items
+      .filter((item) => isVisible(item.contentItem, now, isSubscribed))
+      .map((item) => [`${item.layoutThemeItemId}:${item.position}`, item.contentItem]),
   );
   const feedItems = feed.map((item) => item.contentItem);
   const small = feedItems.filter(isSmall);

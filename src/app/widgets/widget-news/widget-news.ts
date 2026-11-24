@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { formatTime, localImage } from '../../core/format';
-import { Basis, ContentItem, NewsStyleData } from '../../core/models';
+import { Basis, ExternalPost, NewsStyleData, Post } from '../../core/models';
 import { SNAPSHOT_TIME } from '../../data/snapshot';
 
 const SITE = 'https://thebell.io';
@@ -12,7 +12,7 @@ const SITE = 'https://thebell.io';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WidgetNews {
-  readonly contentItem = input.required<ContentItem>();
+  readonly contentItem = input.required<Post | ExternalPost>();
   readonly basis = input.required<Basis>();
 
   protected readonly view = computed(() => {

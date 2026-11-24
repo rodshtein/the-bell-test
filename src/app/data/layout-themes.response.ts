@@ -554,6 +554,20 @@ export const LAYOUT_THEMES_RESPONSE: LayoutTheme[] = [
           "__typename": "LayoutPresetItem"
         },
         {
+          "id": "6862",
+          "layoutPresetId": "1",
+          "position": 2,
+          "fixedModelName": "App\\Models\\SubscriptionList",
+          "fixedModelId": "1",
+          "isRepeatable": false,
+          "layoutThemeItemId": "4621",
+          "contentItem": {
+            "id": "1",
+            "__typename": "SubscriptionList"
+          },
+          "__typename": "LayoutPresetItem"
+        },
+        {
           "id": "6859",
           "layoutPresetId": "1",
           "position": 1,
@@ -607,43 +621,48 @@ export const LAYOUT_THEMES_RESPONSE: LayoutTheme[] = [
           "id": "6856",
           "layoutPresetId": "1",
           "position": 2,
-          "fixedModelName": "App\\Models\\ExternalPost",
-          "fixedModelId": "89",
+          "fixedModelName": "App\\Models\\EventList",
+          "fixedModelId": "1",
           "isRepeatable": false,
           "layoutThemeItemId": "4644",
           "contentItem": {
-            "id": "89",
-            "title": "Темная сторона AI: могут ли модели окончательно выйти из-под контроля. Закрытый вебинар The Bell.Tech",
-            "assets": [
+            "id": "1",
+            "webinars": [
               {
-                "id": "455295",
-                "src": "https://thebell.io/storage_v2/images/896/fdb/896fdbe8-9063-45f9-8e18-0dd2302dd005.jpg",
-                "version": 2,
-                "width": null,
-                "role": 2,
-                "height": null,
-                "isOrigin": true,
-                "mimeType": null,
-                "mode": "only_original",
-                "params": null,
-                "subject": "widget_NewsComponent_background_image",
-                "__typename": "Asset"
+                "id": "1",
+                "title": "Темная сторона AI: могут ли модели окончательно выйти из-под контроля",
+                "speaker": "Дмитрий Волков и Михаил Ягудин",
+                "speaker_about": "независимые исследователи AI",
+                "starts_at": 1796745600000,
+                "registration_ends_at": 1796745600000,
+                "url": "https://webinar.thebell.io/webinar_tech_november2026?utm_source=thebell.site&utm_medium=article&utm_campaign=webinar_tech_november2026",
+                "parent_product": "tech",
+                "__typename": "Webinar"
+              },
+              {
+                "id": "2",
+                "title": "Как победить старение: какие ответы есть у науки и что мы можем сделать сами",
+                "speaker": "Леонид Пешкин",
+                "speaker_about": "биолог из Гарвардского университета",
+                "starts_at": 1797526800000,
+                "registration_ends_at": 1797526800000,
+                "url": "https://chat.osetinskaya.io/peshkin",
+                "parent_product": "chat",
+                "__typename": "Webinar"
+              },
+              {
+                "id": "3",
+                "title": "Великие антропологические открытия, изменившие мир",
+                "speaker": "Александра Архипова",
+                "speaker_about": "социальный антрополог, фольклористка",
+                "starts_at": 1796320800000,
+                "registration_ends_at": 1796320800000,
+                "url": "https://chat.osetinskaya.io/live/arkhipova",
+                "parent_product": "chat",
+                "__typename": "Webinar"
               }
             ],
-            "category": {
-              "id": 11,
-              "title": "The Bell.Tech",
-              "slug": "rassylka-o-tehnologiyah",
-              "__typename": "Category"
-            },
-            "url": "https://webinar.thebell.site/webinar_tech_november2026?utm_source=thebell.site&utm_medium=article&utm_campaign=webinar_tech_november2026",
-            "blank": false,
-            "widget_style": {
-              "name": "news",
-              "data": "{\"title\":\"Темная сторона AI: могут ли модели окончательно выйти из-под контроля. Закрытый вебинар The Bell.Tech\",\"background_image_id\":\"455295\",\"background_image\":{\"id\":\"455295\",\"src\":\"https://thebell.io/storage_v2/images/896/fdb/896fdbe8-9063-45f9-8e18-0dd2302dd005.jpg\",\"version\":2,\"width\":null,\"role\":2,\"height\":null,\"isOrigin\":true,\"mimeType\":null,\"mode\":\"only_original\",\"params\":null,\"subject\":\"widget_NewsComponent_background_image\",\"__typename\":\"Asset\"}}",
-              "__typename": "WidgetStyle"
-            },
-            "__typename": "ExternalPost"
+            "__typename": "EventList"
           },
           "__typename": "LayoutPresetItem"
         },

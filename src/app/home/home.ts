@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { buildLines } from '../core/build-lines';
+import { Viewer } from '../core/viewer';
 import { LAYOUT_DATA_RESPONSE } from '../data/layout-data.response';
 import { LAYOUT_THEMES_RESPONSE } from '../data/layout-themes.response';
 import { Line } from '../grid/line/line';
@@ -12,5 +13,10 @@ import { Line } from '../grid/line/line';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
-  protected readonly lines = buildLines(LAYOUT_THEMES_RESPONSE[0], LAYOUT_DATA_RESPONSE);
+  protected readonly lines = buildLines(
+    LAYOUT_THEMES_RESPONSE[0],
+    LAYOUT_DATA_RESPONSE,
+    Date.now(),
+    inject(Viewer).isSubscribed,
+  );
 }

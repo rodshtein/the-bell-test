@@ -1,0 +1,15 @@
+@if (view(); as v) {
+  <div class="event-card" [class]="'event-card--' + basis() + ' event-card--' + v.webinar.parent_product">
+    <div class="event-card__label">Вебинар · {{ v.parentTitle }}</div>
+    <p class="event-card__title">{{ v.webinar.title }}</p>
+    <p class="event-card__speaker">
+      <span class="event-card__name">{{ v.webinar.speaker }}</span>, {{ v.webinar.speaker_about }}
+    </p>
+    <div class="event-card__footer">
+      <span class="event-card__date">{{ v.date }}</span>
+      <a class="event-card__action" [href]="v.webinar.url" target="_blank" rel="noopener">
+        {{ isSubscribed ? 'О вебинаре' : 'Зарегистрироваться' }}
+      </a>
+    </div>
+  </div>
+}

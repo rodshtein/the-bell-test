@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { GridLine } from '../../core/models';
+import { WidgetEvent } from '../../widgets/widget-event/widget-event';
 import { WidgetNews } from '../../widgets/widget-news/widget-news';
+import { WidgetSubscription } from '../../widgets/widget-subscription/widget-subscription';
 
 @Component({
   selector: 'app-line',
-  imports: [WidgetNews],
+  imports: [WidgetNews, WidgetSubscription, WidgetEvent],
   templateUrl: './line.html',
   styleUrl: './line.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -38,3 +38,10 @@ export function localImage(src: string, basis: Basis, resized: boolean): string 
   if (!resized) return `assets/media/${file}`;
   return `assets/media/${file.replace(/\.\w+$/, '')}_${IMAGE_SIZE[basis]}.webp`;
 }
+
+const EVENT_DAY = new Intl.DateTimeFormat('ru-RU', { day: 'numeric', month: 'long', timeZone: 'Etc/GMT-1' });
+const EVENT_TIME = new Intl.DateTimeFormat('ru-RU', { hour: '2-digit', minute: '2-digit', timeZone: 'Etc/GMT-1' });
+
+export function formatEventDate(startsAt: number): string {
+  return `${EVENT_DAY.format(startsAt)}, ${EVENT_TIME.format(startsAt)} CET`;
+}
