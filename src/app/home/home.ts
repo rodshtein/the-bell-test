@@ -20,6 +20,6 @@ export class Home {
     applyDevLayout(LAYOUT_THEMES_RESPONSE[0], this.viewer.subscriptionBasis, this.viewer.eventBasis),
     LAYOUT_DATA_RESPONSE,
     Date.now(),
-    this.viewer.isSubscribed,
+    this.viewer.subscriptions,
   );
 }

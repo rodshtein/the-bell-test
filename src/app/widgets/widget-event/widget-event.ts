@@ -22,7 +22,7 @@ const PARENT_TITLES: Record<ParentProduct, string> = {
 export class WidgetEvent {
   private readonly rotation = inject(Rotation);
 
-  protected readonly isSubscribed = inject(Viewer).isSubscribed;
+  private readonly viewer = inject(Viewer);
 
   readonly contentItem = input.required<EventList>();
   readonly basis = input.required<Basis>();
@@ -38,7 +38,12 @@ export class WidgetEvent {
         )
       ];
     return webinar
-      ? { webinar, date: formatEventDate(webinar.starts_at), parentTitle: PARENT_TITLES[webinar.parent_product] }
+      ? {
+          webinar,
+          date: formatEventDate(webinar.starts_at),
+          parentTitle: PARENT_TITLES[webinar.parent_product],
+          isSubscribed: this.viewer.has(webinar.parent_product),
+        }
       : null;
   });
 }

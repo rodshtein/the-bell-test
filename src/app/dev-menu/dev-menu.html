@@ -31,13 +31,15 @@
     }
   </div>
   <div class="dev-menu__group">
-    <span class="dev-menu__title">Пользователь</span>
-    <a class="dev-menu__link" [class.dev-menu__link--active]="!viewer.isSubscribed" [href]="link({ subscribed: false })"
-      >гость</a
-    >
-    <a class="dev-menu__link" [class.dev-menu__link--active]="viewer.isSubscribed" [href]="link({ subscribed: true })"
-      >подписчик</a
-    >
+    <span class="dev-menu__title">Подписан на</span>
+    @for (product of products; track product.slug) {
+      <a
+        class="dev-menu__link"
+        [class.dev-menu__link--active]="viewer.subscriptions.includes(product.slug)"
+        [href]="link({ toggle: product.slug })"
+        >{{ product.label }}</a
+      >
+    }
   </div>
   <div class="dev-menu__group">
     <span class="dev-menu__title">Страницы</span>

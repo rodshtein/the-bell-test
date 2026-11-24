@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
-import { Basis, SubscriptionList } from '../../core/models';
+import { Basis, ProductSlug, SubscriptionList } from '../../core/models';
 import { Rotation } from '../../core/rotation';
+import { Viewer } from '../../core/viewer';
 
-const PRODUCTS = [
+const PRODUCTS: { slug: ProductSlug; title: string; lead: string; url: string; image: string }[] = [
   {
     slug: 'news',
     title: 'Читайте новости и\u00a0аналитику The\u00a0Bell без\u00a0ограничений',
@@ -41,17 +42,20 @@ const PRODUCTS = [
 })
 export class WidgetSubscription {
   private readonly rotation = inject(Rotation);
+  private readonly viewer = inject(Viewer);
 
   readonly contentItem = input.required<SubscriptionList>();
   readonly basis = input.required<Basis>();
 
   protected readonly product = computed(() => {
-    const { id } = this.contentItem();
-    return PRODUCTS[
-      this.rotation.pick(
-        `subscription:${id}`,
-        PRODUCTS.map((product) => product.slug),
-      )
-    ];
+    const { id, products } = this.contentItem();
+    const enabled = PRODUCTS.filter(
+      (product) => products.includes(product.slug) && !this.viewer.has(product.slug),
+    );
+    const index = this.rotation.pick(
+      `subscription:${id}`,
+      enabled.map((product) => product.slug),
+    );
+    return enabled[index] ?? null;
   });
 }

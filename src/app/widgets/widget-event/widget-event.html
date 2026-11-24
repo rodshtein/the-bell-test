@@ -8,7 +8,7 @@
     <div class="event-card__footer">
       <span class="event-card__date">{{ v.date }}</span>
       <a class="event-card__action" [href]="v.webinar.url" target="_blank" rel="noopener">
-        {{ isSubscribed ? 'О вебинаре' : 'Зарегистрироваться' }}
+        {{ v.isSubscribed ? 'О вебинаре' : 'Зарегистрироваться' }}
       </a>
     </div>
   </div>

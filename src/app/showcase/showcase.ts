@@ -33,7 +33,11 @@ function buildRows(name: string, create: (id: string) => ContentItem | null): Gr
 })
 export class Showcase {
   protected readonly lines = [
-    ...buildRows('subscription', (id) => ({ id, __typename: 'SubscriptionList' })),
+    ...buildRows('subscription', (id) => ({
+      id,
+      products: ['news', 'tech', 'invest', 'unlimited'],
+      __typename: 'SubscriptionList',
+    })),
     ...buildRows('event', (id) => (EVENTS ? { ...EVENTS, id } : null)),
   ];
 }

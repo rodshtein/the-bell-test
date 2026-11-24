@@ -67,12 +67,15 @@ export interface ExternalPost {
   __typename: 'ExternalPost';
 }
 
+export type ProductSlug = 'news' | 'tech' | 'invest' | 'unlimited';
+
 export interface SubscriptionList {
   id: string;
+  products: ProductSlug[];
   __typename: 'SubscriptionList';
 }
 
-export type ParentProduct = 'news' | 'tech' | 'invest' | 'unlimited' | 'chat';
+export type ParentProduct = ProductSlug | 'chat';
 
 export interface Webinar {
   id: string;

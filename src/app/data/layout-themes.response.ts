@@ -563,6 +563,12 @@ export const LAYOUT_THEMES_RESPONSE: LayoutTheme[] = [
           "layoutThemeItemId": "4621",
           "contentItem": {
             "id": "1",
+            "products": [
+              "news",
+              "tech",
+              "invest",
+              "unlimited"
+            ],
             "__typename": "SubscriptionList"
           },
           "__typename": "LayoutPresetItem"

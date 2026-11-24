@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Basis } from '../core/models';
+import { Basis, ProductSlug } from '../core/models';
 import { Viewer } from '../core/viewer';
 
 const SIZES: { basis: Basis; label: string }[] = [
@@ -23,12 +23,22 @@ export class DevMenu {
     this.isCollapsed.update((value) => !value);
   }
 
-  protected link(change: { subscription?: Basis; event?: Basis; subscribed?: boolean }): string {
+  protected readonly products: { slug: ProductSlug; label: string }[] = [
+    { slug: 'news', label: 'Новости' },
+    { slug: 'tech', label: 'Tech' },
+    { slug: 'invest', label: 'Invest' },
+    { slug: 'unlimited', label: 'Unlimited' },
+  ];
+
+  protected link(change: { subscription?: Basis; event?: Basis; toggle?: ProductSlug }): string {
     const params = new URLSearchParams({
       subscription: String(change.subscription ?? this.viewer.subscriptionBasis),
       event: String(change.event ?? this.viewer.eventBasis),
     });
-    if (change.subscribed ?? this.viewer.isSubscribed) params.set('subscribed', '1');
+    const current = this.viewer.subscriptions;
+    const toggle = change.toggle;
+    const next = !toggle ? current : current.includes(toggle) ? current.filter((slug) => slug !== toggle) : [...current, toggle];
+    if (next.length > 0) params.set('subscribed', next.join(','));
     return `/?${params}`;
   }
 }
