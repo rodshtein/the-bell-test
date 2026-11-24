@@ -1,0 +1,47 @@
+<nav class="dev-menu" [class.dev-menu--collapsed]="isCollapsed()" aria-label="Dev menu">
+  <button
+    class="dev-menu__toggle"
+    type="button"
+    [attr.aria-expanded]="!isCollapsed()"
+    [attr.aria-label]="isCollapsed() ? 'Показать dev-меню' : 'Скрыть dev-меню'"
+    (click)="toggle()"
+  >
+    {{ isCollapsed() ? '‹' : '›' }}
+  </button>
+  <div class="dev-menu__group">
+    <span class="dev-menu__title">Подписки</span>
+    @for (size of sizes; track size.basis) {
+      <a
+        class="dev-menu__link"
+        [class.dev-menu__link--active]="viewer.subscriptionBasis === size.basis"
+        [href]="link({ subscription: size.basis })"
+        >{{ size.label }}</a
+      >
+    }
+  </div>
+  <div class="dev-menu__group">
+    <span class="dev-menu__title">Вебинары</span>
+    @for (size of sizes; track size.basis) {
+      <a
+        class="dev-menu__link"
+        [class.dev-menu__link--active]="viewer.eventBasis === size.basis"
+        [href]="link({ event: size.basis })"
+        >{{ size.label }}</a
+      >
+    }
+  </div>
+  <div class="dev-menu__group">
+    <span class="dev-menu__title">Пользователь</span>
+    <a class="dev-menu__link" [class.dev-menu__link--active]="!viewer.isSubscribed" [href]="link({ subscribed: false })"
+      >гость</a
+    >
+    <a class="dev-menu__link" [class.dev-menu__link--active]="viewer.isSubscribed" [href]="link({ subscribed: true })"
+      >подписчик</a
+    >
+  </div>
+  <div class="dev-menu__group">
+    <span class="dev-menu__title">Страницы</span>
+    <a class="dev-menu__link" [href]="link({})">главная</a>
+    <a class="dev-menu__link" href="/showcase">все размеры</a>
+  </div>
+</nav>

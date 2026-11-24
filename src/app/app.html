@@ -1,17 +1,24 @@
 <div class="wrap">
-  <header>
-    <div class="top-banner">
-      <a class="banner-slot-link" [href]="topBanner.href" target="_blank" rel="noopener">
-        <picture>
-          <source [srcset]="topBanner.imageMobile" media="(max-width: 767px)" />
-          <img [src]="topBanner.image" alt="" fetchpriority="high" />
-        </picture>
-      </a>
-    </div>
-    <app-header />
-  </header>
+  @if (!isBare) {
+    <header>
+      <div class="top-banner">
+        <a class="banner-slot-link" [href]="topBanner.href" target="_blank" rel="noopener">
+          <picture>
+            <source [srcset]="topBanner.imageMobile" media="(max-width: 767px)" />
+            <img [src]="topBanner.image" alt="" fetchpriority="high" />
+          </picture>
+        </a>
+      </div>
+      <app-header />
+    </header>
+  }
   <main>
     <router-outlet />
   </main>
-  <app-footer />
+  @if (!isBare) {
+    <app-footer />
+  }
 </div>
+@if (!isBare) {
+  <app-dev-menu />
+}

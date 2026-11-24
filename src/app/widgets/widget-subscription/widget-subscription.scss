@@ -265,11 +265,13 @@
 
 .promo--basis-33 {
   .promo__desc {
-    display: none;
+    max-width: none;
+    margin-bottom: 15px;
+    font-size: 19px;
   }
 
   .promo__img-wrapper {
-    height: 120px;
+    display: none;
   }
 
   .promo__btn {
@@ -278,12 +280,6 @@
 
   .promo__arrow {
     display: none;
-  }
-
-  &.promo--news .promo__img-wrapper,
-  &.promo--unlimited .promo__img-wrapper {
-    width: 70px;
-    height: 70px;
   }
 }
 
@@ -309,5 +305,29 @@
   .promo--unlimited .promo__img-wrapper {
     width: 80px;
     height: 80px;
+  }
+}
+
+.promo--basis-100 {
+  .promo__title {
+    font-size: 60px;
+    line-height: 1.05;
+  }
+
+  .promo__desc {
+    font-size: 33px;
+    line-height: 1.15;
+  }
+
+  @media (max-width: 767px) {
+    .promo__title {
+      font-size: 32px;
+      line-height: 1.1;
+    }
+
+    .promo__desc {
+      font-size: 18px;
+      line-height: 1.3;
+    }
   }
 }

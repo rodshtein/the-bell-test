@@ -47,6 +47,11 @@ export class WidgetSubscription {
 
   protected readonly product = computed(() => {
     const { id } = this.contentItem();
-    return PRODUCTS[this.rotation.pick(`subscription:${id}`, PRODUCTS.length)];
+    return PRODUCTS[
+      this.rotation.pick(
+        `subscription:${id}`,
+        PRODUCTS.map((product) => product.slug),
+      )
+    ];
   });
 }

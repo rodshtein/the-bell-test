@@ -30,7 +30,13 @@ export class WidgetEvent {
   protected readonly view = computed(() => {
     const list = this.contentItem();
     const webinars = openWebinars(list, Date.now());
-    const webinar = webinars[this.rotation.pick(`event:${list.id}`, webinars.length)];
+    const webinar =
+      webinars[
+        this.rotation.pick(
+          `event:${list.id}`,
+          webinars.map((item) => item.parent_product),
+        )
+      ];
     return webinar
       ? { webinar, date: formatEventDate(webinar.starts_at), parentTitle: PARENT_TITLES[webinar.parent_product] }
       : null;

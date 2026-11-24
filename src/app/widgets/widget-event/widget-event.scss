@@ -80,6 +80,12 @@
   gap: 10px;
 }
 
+.event-card--33 .event-card__footer,
+.event-card--25 .event-card__footer {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .event-card__date {
   font-size: 16px;
   font-weight: 600;
@@ -137,5 +143,37 @@
 @media (max-width: 1024px) {
   .event-card__title {
     font-size: 18px;
+  }
+}
+
+.event-card--100 {
+  .event-card__label {
+    font-size: 18px;
+  }
+
+  .event-card__title {
+    font-size: 60px;
+    line-height: 1.05;
+  }
+
+  .event-card__speaker {
+    font-size: 33px;
+    line-height: 1.15;
+  }
+
+  @media (max-width: 767px) {
+    .event-card__label {
+      font-size: 14px;
+    }
+
+    .event-card__title {
+      font-size: 32px;
+      line-height: 1.1;
+    }
+
+    .event-card__speaker {
+      font-size: 18px;
+      line-height: 1.3;
+    }
   }
 }
